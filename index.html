@@ -1016,38 +1016,48 @@
                     </div>
                 </div>
                 
-             <div class="contact-form animate delay-2">
-    <h3>Request a Quote via WhatsApp</h3>
-    <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="wa-name" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="wa-email" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="wa-phone" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="service">Service Required</label>
-        <select id="wa-service" class="form-control" required>
-            <option value="">Select a service</option>
-            <option value="Chiller Systems">Chiller Systems</option>
-            <option value="HVAC Installation">HVAC Installation</option>
-            <!-- Keep other options same as before -->
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="message">Project Details</label>
-        <textarea id="wa-message" class="form-control" required></textarea>
-    </div>
-    <button onclick="sendViaWhatsApp()" class="submit-btn">
-        <i class="fab fa-whatsapp"></i> Send via WhatsApp
-    </button>
-</div>
+                <div class="contact-form animate delay-2">
+                    <h3>Request a Quote</h3>
+                    <form id="quoteForm" onsubmit="sendEmail(); return false;">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Required</label>
+                            <select id="service" name="service" class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="Chiller Systems">Chiller Systems</option>
+                                <option value="HVAC Installation">HVAC Installation</option>
+                                <option value="Building Maintenance">Building Maintenance</option>
+                                <option value="Control Systems">Control Systems</option>
+                                <option value="Ducting & Ventilation">Ducting & Ventilation</option>
+                                <option value="Pump Systems">Pump Systems</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Submit Request</button>
+                    </form>
+                </div>
             </div>
+        </div>
     </section>
     
     <!-- Footer -->
@@ -1217,24 +1227,5 @@
             alert('Thank you for your request. Your email client will open to send us your inquiry.');
         }
     </script>
-   <script>
-function sendViaWhatsApp() {
-    const name = document.getElementById('wa-name').value;
-    const email = document.getElementById('wa-email').value;
-    const phone = document.getElementById('wa-phone').value;
-    const service = document.getElementById('wa-service').value;
-    const message = document.getElementById('wa-message').value;
-
-    const text = `New Quote Request:
-*Name:* ${name}
-*Phone:* ${phone}
-*Email:* ${email || 'Not provided'}
-*Service Needed:* ${service}
-*Details:* ${message}`;
-
-    const encodedText = encodeURIComponent(text);
-    window.open(`https://wa.me/+971557185001?text=${encodedText}`);
-}
-</script>
 </body>
 </html>
