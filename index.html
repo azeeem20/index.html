@@ -1227,5 +1227,43 @@
             alert('Thank you for your request. Your email client will open to send us your inquiry.');
         }
     </script>
+    <script>
+function sendEmail() {
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+    
+    // Create email subject and body
+    const subject = `New Quote Request from ${name}`;
+    const body = `
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Service Needed: ${service}
+        Message: ${message}
+    `;
+    
+    // Encode for URL
+    const encodedBody = encodeURIComponent(body);
+    
+    // For mobile devices
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = `mailto:azeem.aslam@almumtaz-fme.com?subject=${encodeURIComponent(subject)}&body=${encodedBody}`;
+    } 
+    // For desktop
+    else {
+        window.open(`mailto:azeem.aslam@almumtaz-fme.com?subject=${encodeURIComponent(subject)}&body=${encodedBody}`);
+    }
+    
+    // Show confirmation
+    alert("Thank you! Please check your email client to complete sending your request.");
+    
+    // Reset form
+    document.getElementById('quoteForm').reset();
+}
+</script>
 </body>
 </html>
